@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<h2>All Transfers</h2>
+<ul>
+  <% transfers.forEach(transfer => { %>
+    <li>
+      <strong>From:</strong> <%= transfer.from %> 
+      <strong>To:</strong> <%= transfer.to %> 
+      <strong>Amount:</strong> <%= transfer.amount %> 
+      <strong>Date:</strong> <%= new Date(transfer.date).toLocaleString() %>
+    </li>
+  <% }) %>
+</ul>
+<%- include('partials/footer') %>

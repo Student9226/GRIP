@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<h2>Transfer Money from <%= customer.name %></h2>
+<p>Current Balance: <%= customer.current_balance %></p> 
+<% if (typeof error !== 'undefined') { %>
+  <p style="color: red;"><%= error %></p> 
+<% } %>
+<form action="/transfer" method="POST">
+  <input type="hidden" name="from" value="<%= customer._id %>">
+  <label for="to">To:</label>
+  <select name="to" id="to">
+    <% customers.forEach(c => { %>
+      <option value="<%= c._id %>"><%= c.name %> - Balance: <%= c.current_balance %></option>
+    <% }) %>
+  </select>
+  <label for="amount">Amount:</label>
+  <input type="number" name="amount" id="amount" min="1" required>
+  <button type="submit">Transfer</button>
+</form>
+<%- include('partials/footer') %>
